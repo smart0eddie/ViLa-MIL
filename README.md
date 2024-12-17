@@ -31,14 +31,14 @@ TCGA-LUAD
 
 ## 3. Prepare Dataset File
 
-For each dataset, a `dataset.csv` file is needed in the following format and put it into the `dataset_csv` folder:
+For each dataset, a `DATASET.csv` file is needed in the following format and put it into the `dataset_csv` folder:
 
 ```
 Headname: 'case_id, slide_id, label'
 Each line: 'TCGA-UZ-A9PS, TCGA-UZ-A9PS-01Z-00-DX1.3CAF5087-CDAB-42B5-BE7C-3D5643AEAA6D, CCRCC'
 ```
 
-A `uuid_name_file.xlsx` file stores the corresponding relations between uuid and slide files
+A `UUID.xlsx` file stores the corresponding relations between uuid and slide files
 ```
 Headname: 'uuid', 'slide file name', 'slide label'
 Each line: '94a35fa3-7b14-4393-9288-ebc3a37716f1, TCGA-49-6745-01Z-00-DX3.40cd3c60-889c-4eaa-be55-36ab5d8b2400.svs, LUAD'
@@ -65,10 +65,10 @@ python create_patches_fp.py \
 
 The list of parameters is as follows:
 
-* `source`: The downloading original WSI folder path in `step 2`.
-* `slide_name_file`: The path of csv dataset file in `step 3`.
-* `save_dir`: The saving folder path for generating results.
-* `uuid_name_file`: A `.xlsx` file stores the corresponding relations between uuid and slide files in the followling format ('uuid', 'slide file name', 'slide label').
+* `source`: The downloading original WSI folder path in `step 2`, ending with `'/'` or `'\\'`.
+* `slide_name_file`: The path of `DATASET.csv` in `step 3`.
+* `save_dir`: The saving folder path for generating results, ending with `'/'` or `'\\'`.
+* `uuid_name_file`: The path of `UUID.xlsx` file in `step 3`
 
 4.2 Crop Patches
 
