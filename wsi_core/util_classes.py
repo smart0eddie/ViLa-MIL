@@ -81,6 +81,7 @@ class isInContourV3_Easy(Contour_Checking_fn):
 			all_points = [center]
 		
 		for points in all_points:
+			points = [points[0].item(), points[1].item()] # for opencv > 4.5.?
 			if cv2.pointPolygonTest(self.cont, points, False) >= 0:
 				return 1
 		return 0
