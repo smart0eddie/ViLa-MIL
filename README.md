@@ -13,19 +13,35 @@ Jiangbo Shi, Chen Li, Tieliang Gong, Yefeng Zheng, Huazhu Fu
 
 ## 1. Pre-requisites
 
-Python (3.7.7), h5py (2.10.0), matplotlib (3.1.1), numpy (1.18.1), opencv-python (4.1.1), openslide-python (1.1.1), openslide (3.4.1), pandas (1.1.3), pillow (7.0.0), PyTorch (1.6.0), scikit-learn (0.22.1), scipy (1.4.1), tensorboardx (1.9), torchvision (0.7.0), captum (0.2.0), shap (0.35.0), clip (1.0).
+Python (3.7.7), h5py (2.10.0), matplotlib (3.1.1), numpy (1.18.1), opencv-python (4.1.1), openslide-python (1.1.1), openslide (3.4.1), pandas (1.1.3), pillow (7.0.0), PyTorch (1.6.0), scikit-learn (0.22.1), scipy (1.4.1), tensorboardx (1.9), torchvision (0.7.0), captum (0.2.0), shap (0.35.0), clip (1.0), openpyxl.
 
 ## 2. Download Dataset
 
 The two public TCGA-RCC and TCGA-Lung datasets can be downloaded in [NIH Genomic Data Commons Data Portal](https://portal.gdc.cancer.gov/). For the specific downloading tool, please refer to [GDC Data Transfer.](https://docs.gdc.cancer.gov/Data_Transfer_Tool/Users_Guide/Data_Download_and_Upload/) 
 
+https://pmc.ncbi.nlm.nih.gov/articles/PMC6075733/
+TCGA-RCC dataset includes
+TCGA-KIRC (CCRCC)
+TCGA-KIRP (PRCC)
+TCGA-KICH (ChRCC)
+
+TCGA-Lung dataset includes
+TCGA-LUSC
+TCGA-LUAD
+
 ## 3. Prepare Dataset File
 
-For each dataset, a `.csv` file is needed in the following format and put it into the `dataset_csv` folder:
+For each dataset, a `dataset.csv` file is needed in the following format and put it into the `dataset_csv` folder:
 
 ```
 Headname: 'case_id, slide_id, label'
-Each line: 'patient_0, TCGA-UZ-A9PS-01Z-00-DX1.3CAF5087-CDAB-42B5-BE7C-3D5643AEAA6D, CCRCC'
+Each line: 'TCGA-UZ-A9PS, TCGA-UZ-A9PS-01Z-00-DX1.3CAF5087-CDAB-42B5-BE7C-3D5643AEAA6D, CCRCC'
+```
+
+A `uuid_name_file.xlsx` file stores the corresponding relations between uuid and slide files
+```
+Headname: 'uuid', 'slide file name', 'slide label'
+Each line: '94a35fa3-7b14-4393-9288-ebc3a37716f1, TCGA-49-6745-01Z-00-DX3.40cd3c60-889c-4eaa-be55-36ab5d8b2400.svs, LUAD'
 ```
 
 ## 4. Preprocess Data
@@ -52,7 +68,7 @@ The list of parameters is as follows:
 * `source`: The downloading original WSI folder path in `step 2`.
 * `slide_name_file`: The path of csv dataset file in `step 3`.
 * `save_dir`: The saving folder path for generating results.
-* `uuid_name_file`: A file stores the corresponding relations between uuid and slide name in the followling format ('uuid', 'slide name', 'slide label').
+* `uuid_name_file`: A `.xlsx` file stores the corresponding relations between uuid and slide files in the followling format ('uuid', 'slide file name', 'slide label').
 
 4.2 Crop Patches
 
