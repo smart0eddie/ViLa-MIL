@@ -240,7 +240,7 @@ parser.add_argument('--patch_size', type = int, default=256,
 parser.add_argument('--patch', default=False, action='store_true')
 parser.add_argument('--seg', default=False, action='store_true')
 parser.add_argument('--stitch', default=False, action='store_true')
-parser.add_argument('--no_auto_skip', default=False, action='store_false')
+parser.add_argument('--no_auto_skip', default=False, action='store_true')
 parser.add_argument('--save_dir', type = str,
 					help='directory to save processed data')
 parser.add_argument('--preset', default=None, type=str,
@@ -319,4 +319,4 @@ if __name__ == '__main__':
 										   seg = args.seg,  use_default_params=False, save_mask = True,
 										   stitch= args.stitch,
 										   patch_level=args.patch_level, patch = args.patch,
-										   process_list = process_list, auto_skip=args.no_auto_skip, uuid_name_file=args.uuid_name_file)
+										   process_list = process_list, auto_skip=not args.no_auto_skip, uuid_name_file=args.uuid_name_file)
