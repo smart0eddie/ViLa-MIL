@@ -21,7 +21,7 @@ slide_folder = args.SLIDE_FOLDER_PATH
 all_data = np.array(pd.read_excel(args.ALL_DATA_PATH, engine='openpyxl',  header=None))
 root_folder = args.ROOT_FOLDER_PATH
 define_patch_size = args.define_patch_size 
-patch_folder = args.ROOT_FOLDER_PATH + +'/patches_'+str(define_patch_size)+'/'
+patch_folder = args.ROOT_FOLDER_PATH +'/patches_'+str(define_patch_size)+'/'
 save_folder = args.SAVE_FOLDER_PATH
 
 if(define_patch_size == 2048):
@@ -62,7 +62,7 @@ def generate_patch(patch_file_name):
         elif(magnification == 20):
             resized_patch_size = int(patch_size/(scale/2))
         for coord in tqdm(coords):
-            coord = coord.astype(np.int)
+            coord = coord.astype(int)
             patch = slide.read_region(coord, int(patch_level), (int(patch_size), int(patch_size))).convert('RGB')
             patch = patch.resize((resized_patch_size, resized_patch_size))
             patch_name = str(coord[0]) + '_' + str(coord[1]) + '.png'
