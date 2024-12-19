@@ -1,4 +1,5 @@
 import os
+import argparse
 import h5py
 import numpy as np
 import openslide
@@ -6,12 +7,22 @@ import pandas as pd
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor
 
-slide_folder = 'SLIDE_FOLDER_PATH'
-all_data = np.array(pd.read_excel('ALL_DATA_PATH', engine='openpyxl',  header=None))
-root_folder = 'ROOT_FOLDER_PATH' 
-define_patch_size = 1024 
-patch_folder = 'ROOT_FOLDER_PATH' + +'/patches_'+str(define_patch_size)+'/'
-save_folder = 'SAVE_FOLDER_PATH'
+
+parser = argparse.ArgumentParser(description='Configurations for patch cropping')
+parser.add_argument('--SLIDE_FOLDER_PATH', type=str, help="path to folder of slide files")
+parser.add_argument('--ALL_DATA_PATH', type=str, help="path to uuid_name_file.xlsx")
+parser.add_argument('--ROOT_FOLDER_PATH', type=str, help="path to root folder of patch coordinate files (one level up)")
+parser.add_argument('--SAVE_FOLDER_PATH', type=str, help="path to output folder")
+parser.add_argument('--define_patch_size', type=int, default=1024)
+
+args = parser.parse_args()
+
+slide_folder = args.SLIDE_FOLDER_PATH
+all_data = np.array(pd.read_excel(args.ALL_DATA_PATH, engine='openpyxl',  header=None))
+root_folder = args.ROOT_FOLDER_PATH
+define_patch_size = args.define_patch_size 
+patch_folder = args.ROOT_FOLDER_PATH + +'/patches_'+str(define_patch_size)+'/'
+save_folder = args.SAVE_FOLDER_PATH
 
 if(define_patch_size == 2048):
     scale = 8
