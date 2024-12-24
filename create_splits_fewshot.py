@@ -1,11 +1,24 @@
+import argparse
 import pandas as pd 
 import numpy as np 
 import os 
 
-N = 'SHOT_NUMBER'
-data_folder = 'DATA_FOLDER'
-all_data = np.array(pd.read_excel('ALL_DATA_PATH', engine='openpyxl',  header=None))
-save_folder = 'SAVE_FOLDER'
+parser = argparse.ArgumentParser(description='Creating splits for whole slide classification')
+parser.add_argument('--SHOT_NUMBER', type=int, default= 16,
+                    help='few shot number (default: 16)')
+parser.add_argument('--DATA_FOLDER', type=str, default="splits/",
+                    help='path to folder of splits, end with "/"')
+parser.add_argument('--ALL_DATA_PATH', type=str,
+                    help='path to uuid_name_file.xlsx')
+parser.add_argument('--SAVE_FOLDER', type=str,
+                    help='output folder, end with "/"')
+
+args = parser.parse_args()
+
+N = args.SHOT_NUMBER
+data_folder = args.DATA_FOLDER
+all_data = np.array(pd.read_excel(args.ALL_DATA_PATH, engine='openpyxl',  header=None))
+save_folder = args.SAVE_FOLDER
 
 if(not os.path.exists(save_folder)):
     os.makedirs(save_folder)
