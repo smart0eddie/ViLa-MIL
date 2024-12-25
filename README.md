@@ -49,6 +49,7 @@ Each line: '94a35fa3-7b14-4393-9288-ebc3a37716f1, TCGA-49-6745-01Z-00-DX3.40cd3c
 4.1 Generate Patch Coordinate
 
 Utilize the sliding window method to generate the patch coordinates from WSI for cropping.
+Run this twice for 10x and 5x.
 
 ```python
 python create_patches_fp.py \
@@ -69,6 +70,8 @@ The list of parameters is as follows:
 * `slide_name_file`: The path of `DATASET.csv` in `step 3`.
 * `save_dir`: The saving folder path for generating results, ending with `'/'` or `'\\'`.
 * `uuid_name_file`: The path of `UUID.xlsx` file in `step 3`
+* `patch_size`: 1024 for 10x, 2048 for 5x
+* `step_size`: 1024 for 10x, 2048 for 5x
 
 4.2 Crop Patches
 
