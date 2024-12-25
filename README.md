@@ -190,8 +190,8 @@ Parameter Descriptions:
 * `results_dir`: The path where model training results are saved.
 * `exp_code`: The subfolder saved in `results_dir`.
 * `data_root_dir`: The path where patch features are saved in `step 4.3`.
-* `data_folder_s`: The sub-folder name for low resolution patch features in `step 4.3`.
-* `data_folder_l`: The sub-folder name for high resolution patch features in `step 4.3`.
+* `data_folder_s`: The sub-folder name for low resolution (5x) patch features in `step 4.3`.
+* `data_folder_l`: The sub-folder name for high resolution patch (10x) features in `step 4.3`.
 * `split_dir`: The same path as `save_folder` in `step 5.2`.
 * `text_prompt_path`: The path of text prompt file.
 
