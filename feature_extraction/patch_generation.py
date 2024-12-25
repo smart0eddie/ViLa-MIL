@@ -64,6 +64,8 @@ def generate_patch(patch_file_name):
         for coord in tqdm(coords):
             coord = coord.astype(int)
             patch = slide.read_region(coord, int(patch_level), (int(patch_size), int(patch_size))).convert('RGB')
+            # TODO: this is the incorrect way to crop patches with different scale
+            # The low-scale patches will not have larger field of view
             patch = patch.resize((resized_patch_size, resized_patch_size))
             patch_name = str(coord[0]) + '_' + str(coord[1]) + '.png'
             patch_save_path = os.path.join(save_path, patch_name)
