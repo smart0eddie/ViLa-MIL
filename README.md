@@ -73,6 +73,7 @@ The list of parameters is as follows:
 4.2 Crop Patches
 
 Utilize the above generated patch coordinate file to crop the patches.
+Run this twice with 10x and 5x.
 
 ```
 cd feature_extraction
@@ -86,12 +87,13 @@ Paramters Descriptions:
 * `slide_folder`: The downloading original WSI folder path in `step 2`.
 * `all_data`: The same path as the `uuid_name_file` in `step 4.1`.
 * `root_folder`: The same path as the save_dir in `step 4.1`.
-* `define_path_size`: For the TCGA dataset, all the patches are cropped at the highest magnification. If patches are needed to crop at 10x with size 256. this parameter should defined as 1024.
+* `define_path_size`: For the TCGA dataset, all the patches are cropped at the highest magnification. If patches are needed to crop at 10x with size 256. this parameter should defined as 1024, 2048 for 5x.
 * `save_folder`: The path where the cropping patches are saved.
 
 4.3 Extract Patch Features
 
 Utilize a pretrain encoder (*e.g.,* CLIP-pretrained ResNet50) to extract the patch features.
+Run this twice with 10x and 5x.
 
 ```
 python patch_extraction.py \
@@ -181,12 +183,12 @@ python main.py \
 
 Parameter Descriptions:
 
-* `task`: '`task_tcga_rcc_subtyping`' for the TCGA_RCC dataset.
+* `task`: '`task_tcga_rcc_subtyping`' for the TCGA_RCC dataset, '`task_tcga_lung_subtyping`' for the TCGA_Lung dataset.
 * `results_dir`: The path where model training results are saved.
-* `exp_code`: The folder saved in `results_dir`.
-* `data_root_dir`: The path where patch features are saved.
-* `data_folder_s`: The folder name for low-scale patch features.
-* `data_folder_l`: The folder name for high-scale patch features.
+* `exp_code`: The subfolder saved in `results_dir`.
+* `data_root_dir`: The path where patch features are saved in `step 4.3`.
+* `data_folder_s`: The sub-folder name for low resolution patch features in `step 4.3`.
+* `data_folder_l`: The sub-folder name for high resolution patch features in `step 4.3`.
 * `split_dir`: The same path as `save_folder` in `step 5.2`.
 * `text_prompt_path`: The path of text prompt file.
 
