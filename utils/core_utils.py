@@ -269,8 +269,9 @@ def validate(cur, epoch, model, loader, n_classes, early_stopping = None, writer
             val_loss += loss.item()
             error = calculate_error(Y_hat, label)
             val_error += error
-            all_pred.append(Y_hat.cpu())
-            all_label.append(label.cpu())
+            # TODO: this only works for batch size == 1
+            all_pred.append(Y_hat[0,0].cpu())
+            all_label.append(label[0].cpu())
 
     val_error /= len(loader)
     val_loss /= len(loader)
