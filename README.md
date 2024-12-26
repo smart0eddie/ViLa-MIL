@@ -13,7 +13,11 @@ Jiangbo Shi, Chen Li, Tieliang Gong, Yefeng Zheng, Huazhu Fu
 
 ## 1. Pre-requisites
 
-Python (3.7.7), h5py (2.10.0), matplotlib (3.1.1), numpy (1.18.1), opencv-python (4.1.1), openslide-python (1.1.1), openslide (3.4.1), pandas (1.1.3), pillow (7.0.0), PyTorch (1.6.0), scikit-learn (0.22.1), scipy (1.4.1), tensorboardx (1.9), torchvision (0.7.0), captum (0.2.0), shap (0.35.0), clip (1.0), openpyxl, torchsummary.
+Python (3.7.7), h5py (2.10.0), matplotlib (3.1.1), numpy (1.18.1), opencv-python (4.1.1), openslide-python (1.1.1), openslide (3.4.1), pandas (1.1.3), pillow (7.0.0), PyTorch (1.6.0), scikit-learn (0.22.1), scipy (1.4.1), tensorboardx (1.9), torchvision (0.7.0), captum (0.2.0), shap (0.35.0), clip (1.0), openpyxl, torchsummary, ml_collections, nmslib.
+
+nmslib installation for Windows and/or python >= 3.10
+https://github.com/nmslib/nmslib/issues/464#issuecomment-2191090814
+`pip install nmslib-metabrainz==2.1.2`
 
 ## 2. Download Dataset
 
@@ -192,7 +196,7 @@ Parameter Descriptions:
 * `data_root_dir`: The path where patch features are saved in `step 4.3`.
 * `data_folder_s`: The sub-folder name for low resolution (5x) patch features in `step 4.3`.
 * `data_folder_l`: The sub-folder name for high resolution patch (10x) features in `step 4.3`.
-* `split_dir`: The same path as `save_folder` in `step 5.2`.
+* `split_dir`: The same path as `save_folder` in `step 5.2` without `splits/`.
 * `text_prompt_path`: The path of text prompt file.
 
 ## 8. Eval Model
