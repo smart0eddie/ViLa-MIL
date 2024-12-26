@@ -376,7 +376,8 @@ def multi_head_attention_forward(
 
 import torch
 from torch import Tensor
-if float(torch.__version__.split('.')[0]) == 0 or (float(torch.__version__.split('.')[0]) == 1 and float(torch.__version__.split('.')[1])) < 9:
+if float(torch.__version__.split('.')[0]) == 0 \
+    or (float(torch.__version__.split('.')[0]) == 1 and float(torch.__version__.split('.')[1]) < 9):
     from torch.nn.modules.linear import _LinearWithBias
 else:
     from torch.nn.modules.linear import NonDynamicallyQuantizableLinear as _LinearWithBias
