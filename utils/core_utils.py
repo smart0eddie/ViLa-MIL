@@ -335,8 +335,8 @@ def summary(mode, model, loader, n_classes):
             error = calculate_error(Y_hat, label)
             test_error += error
 
-            all_pred.append(Y_hat.cpu())
-            all_label.append(label.cpu())
+            all_pred.append(Y_hat[0,0].cpu())
+            all_label.append(label[0].cpu())
 
         test_error /= len(loader)
         test_f1 = f1_score(all_label, all_pred, average='macro')

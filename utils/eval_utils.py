@@ -95,8 +95,8 @@ def summary(mode, model, loader, args):
             all_probs[batch_idx] = probs
             all_labels[batch_idx] = label.item()
             all_preds[batch_idx] = Y_hat.item()
-            all_pred.append(Y_hat.cpu())
-            all_label.append(label.cpu())
+            all_pred.append(Y_hat[0,0].cpu())
+            all_label.append(label[0].cpu())
             patient_results.update({slide_id: {'slide_id': np.array(slide_id), 'prob': probs, 'label': label.item()}})
             error = calculate_error(Y_hat, label)
             test_error += error
