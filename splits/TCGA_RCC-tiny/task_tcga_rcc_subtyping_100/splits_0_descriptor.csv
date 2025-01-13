@@ -1,0 +1,4 @@
+,train,val,test
+CCRCC,20,15,15
+PRCC,19,16,15
+CRCC,21,15,14
